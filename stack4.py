@@ -1,7 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python2.6
 
 from subprocess import Popen, PIPE
-import binascii
 
 p = Popen("/home/adam/stack4",stdin=PIPE)
 

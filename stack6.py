@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.6
+
 import struct
 
 value = struct.pack("I", 0x080484d3)
